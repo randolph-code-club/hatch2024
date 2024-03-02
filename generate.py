@@ -1,4 +1,5 @@
 import numpy as np
+import random
 from tensorflow import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
@@ -24,7 +25,11 @@ def generate_sequence(model, seed_sequence, length):
     return generated_sequence
 
 # Generate a new sequence based on the trained model
-seed_sequence = [0, 0, 0]
+seed_sequence = []
+for i in range(5637):
+    seed_sequence.append(0)
+
+seed_sequence.append(random.randint(10, 15214))
 generated_sequence = generate_sequence(model, seed_sequence, length=5)
 
 # Denormalize the generated sequence

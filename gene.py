@@ -1,18 +1,38 @@
 import numpy as np
 import tensorflow as tf
+import os
+
+directory_path = 'column_files/'
 
 # Generate sample data (list of integer arrays)
 sequence_length = 3
-data = [
-    np.array([1, 2, 3, 4, 5, 6]),
-    np.array([6, 7, 8, 9, 10, 6]),
-    np.array([11, 12, 13, 14, 15, 6]),
-    np.array([16, 17, 18, 19, 20, 6]),
-    np.array([16, 17, 18, 19, 20, 3])
-]
+# data = [
+#     np.array([1, 2, 3, 4, 5, 6]),
+#     np.array([6, 7, 8, 9, 10, 6]),
+#     np.array([11, 12, 13, 14, 15, 6]),
+#     np.array([16, 17, 18, 19, 20, 6]),
+#     np.array([16, 17, 18, 19, 20, 3])
+# ]
+
+# for each file in column files directory
+# read the file and create an array from each line in the file
+# add that array to data
+files = [f for f in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, f))]
+
+data = []
+
+for file_name in files[:10]:
+    sample = []
+    file_path = os.path.join(directory_path, file_name)
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+        for line in lines[1:]:
+            sample.append(int(line.strip()))
+    data.append(np.array(sample))
+            
 
 # Normalize data
-# data_normalized = [sequence / int(max(sequence)) for sample in data]
+#data_normalized = [sample / float(max(sample)) for sample in data]
 
 # Create sequences and labels
 def create_sequences_and_labels(data, sequence_length):
@@ -39,6 +59,6 @@ model = tf.keras.Sequential([
 model.compile(optimizer='adam', loss='mean_squared_error')
 
 # Train the model
-model.fit(sequences, labels, epochs=100, batch_size=1)
+model.fit(sequences, labels, epochs=10, batch_size=1)
 model.summary()
 model.save("gene.keras")
