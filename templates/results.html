@@ -137,21 +137,43 @@
     <div style="text-align: center;">
         <h1>Your Results</h1>
         <hr/>
+        <div style="text-align:center;">
+            <form style="width:200px; text-align:center;">
+                <label for="race" class="form-label">Race</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Choose...</option>
+                        <option value="1">White</option>
+                        <option value="2">Asian</option>
+                        <option value="2">African-American</option>
+                        <option value="3">Prefer not to say</option>
+                    </select>
+            </form>
+        </div>
         <h2>Gene: ENSG00000278704.1</h2>
         <p style="margin-bottom:50px"><a href="#">Learn more about this here</a></p>
         <h2><span class="badge rounded-pill text-bg-warning">42%</span> risk of this gene being expressed</h2>
         <h3><span class="badge rounded-pill text-bg-success">10%</span> risk it is strongly expressed</h3>
+        <div style="margin-bottom:20px; margin-top:20px">
+            <span style="font-size:20px">
+                Your Gene's Sequence:
+            </span>
+        </div>
     </div>
     <div class="wrapper" style="margin-top:200px">
-        <div style="margin-bottom:20px">
-            <span style="color: white;">
-                A
+        <div style="margin-bottom:20px; margin-left:14px;">
+            <span style="font-size:16px; letter-spacing:21.3pt">
+                <b>{{ sequence }}</b>
             </span>
         </div>
         <div class="dna">
             {% for i in range(20) %}
                 <div style="--i: {{ i + 1 }}"></div>
             {% endfor %}
+        </div>
+        <div style="margin-top:20px; margin-left:14px;">
+            <span style="font-size:16px; letter-spacing:21.3pt">
+                <b>{{ sequence2 }}</b>
+            </span>
         </div>
     </div>
 </body>
