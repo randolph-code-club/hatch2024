@@ -1,21 +1,24 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="../assets/js/color-modes.js"></script>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.122.0">
-    <title>Checkout example · Bootstrap v5.3</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
-
-    
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <head>
+    <!-- <script src="../assets/js/color-modes.js"></script> -->
+	<link id="favicon" rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}" type="image/x-icon">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+	<style type="text/css">
+		#map {
+		  height: 100%;
+		}
+		html, body {
+		  height: 100%;
+		  margin: 0;
+		  padding: 0;
+		}
+	</style>
 
     <style>
       .bd-placeholder-img {
@@ -156,7 +159,6 @@
 <div class="container">
   <main>
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
       <h2>Checkout form</h2>
       <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
     </div>
