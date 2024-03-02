@@ -26,7 +26,7 @@ for file_name in files[:10]:
     file_path = os.path.join(directory_path, file_name)
     with open(file_path, 'r') as file:
         lines = file.readlines()
-        for line in lines[1:]:
+        for line in lines[5638:6638]:
             sample.append(int(line.strip()))
     data.append(np.array(sample))
             
@@ -59,6 +59,6 @@ model = tf.keras.Sequential([
 model.compile(optimizer='adam', loss='mean_squared_error')
 
 # Train the model
-model.fit(sequences, labels, epochs=10, batch_size=1)
+model.fit(sequences, labels, epochs=100, batch_size=1)
 model.summary()
 model.save("gene.keras")
