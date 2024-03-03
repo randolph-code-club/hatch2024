@@ -56,11 +56,9 @@ mse = model.evaluate(X_test, y_test)
 print(f'Mean Squared Error on Test Set: {mse}')
 
 # Generate a new integer array with the trained model
-# new_data = np.random.randint(0, 24393951, (1, sequence_length))
-# predicted_sum = model.predict(new_data)[0, 0]
+new_data = np.random.randint(0, 24393951, (1, sequence_length))
+predicted_sum = model.predict(new_data)[0, 0]
 
-# print("\nGenerated New Integer Array:")
-# print(new_data)
-# print("\nPredicted Sum of the New Integer Array:", int(predicted_sum))
-model.summary()
-model.save("gene.keras")
+print("\nGenerated New Integer Array:")
+print(new_data)
+print("\nPredicted Sum of the New Integer Array:", int(predicted_sum))

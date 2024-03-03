@@ -131,6 +131,7 @@
             bottom: 0;
             transform: translate(-50%, 50%);
         }
+
     </style>
 </head>
 <body>
@@ -138,21 +139,31 @@
         <h1>Your Results</h1>
         <hr/>
         <div style="text-align:center;">
-            <form style="width:200px; text-align:center;">
-                <label for="race" class="form-label">Race</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Choose...</option>
-                        <option value="1">White</option>
-                        <option value="2">Asian</option>
-                        <option value="2">African-American</option>
-                        <option value="3">Prefer not to say</option>
+            <form style="text-align:center">
+                <label for="race" class="form-label" style="font-size: 24px;">Gene</label>
+                    <select aria-label="Default select example">
+                        <option value="1">High Risk: {{ highest_chance }}</option>
+                        <option value="2">Lowest Risk: {{ lowest_chance }}</option>
+                        <option value="3">Strongest Expression Risk: {{ highest_expression }}</option>
+                        <option value="4">Lowest Expression Risk: {{ lowest_expression }}</option>3
                     </select>
             </form>
         </div>
-        <h2>Gene: ENSG00000278704.1</h2>
         <p style="margin-bottom:50px"><a href="#">Learn more about this here</a></p>
-        <h2><span class="badge rounded-pill text-bg-warning">42%</span> risk of this gene being expressed</h2>
-        <h3><span class="badge rounded-pill text-bg-success">10%</span> risk it is strongly expressed</h3>
+        {% if 33 > random_chance %}
+            <h2><span class="badge rounded-pill text-bg-success">{{ random_chance }}%</span> risk of this gene being expressed</h2>
+        {% elif random_chance > 67 %}
+            <h2><span class="badge rounded-pill text-bg-danger">{{ random_chance }}%</span> risk of this gene being expressed</h2>
+        {% else %}
+            <h2><span class="badge rounded-pill text-bg-warning">{{ random_chance }}%</span> risk of this gene being expressed</h2>
+        {% endif %}
+        {% if 33 > random_strong %}
+            <h3><span class="badge rounded-pill text-bg-success">{{ random_strong }}%</span> risk it is strongly expressed</h3>
+        {% elif random_strong > 67 %}
+            <h3><span class="badge rounded-pill text-bg-danger">{{ random_strong }}%</span> risk it is strongly expressed</h3>
+        {% else %}
+            <h3><span class="badge rounded-pill text-bg-warning">{{ random_strong }}%</span> risk it is strongly expressed</h3>
+        {% endif %}
         <div style="margin-bottom:20px; margin-top:20px">
             <span style="font-size:20px">
                 Your Gene's Sequence:
