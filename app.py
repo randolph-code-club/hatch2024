@@ -36,21 +36,37 @@ def download(key):
 
 @app.route("/results", methods = ['POST'])
 def results():
+    # highest_chance = {'id':'', 'val':0}
+    # lowest_chance = {}
+    # highest_expression = {}
+    # lowest_expression = {}
     form_data = request.form
-    print(len(select_mimic_genome(form_data)))
     genome_id = str(uuid.uuid4())
     with open(genome_file_name(genome_id), "w") as genome_file:
     # Write each item from the list to the file
         first = True
-        for dict in select_mimic_genome(form_data):
+        genomes = select_mimic_genome(form_data)
+        for dict in genomes:
             if first:
                 for key in dict:
                     genome_file.write(f"{key},")
                 genome_file.write("\n")
                 first = False
-            for item in dict.values():
+            for key, item in dict.items():
                 genome_file.write(f"{item},")
+                # # if item > highest_chance['val']:
+                # #     highest_chance = {'id':key, 'val':int(item)}
+                # # if item < lowest_chance['val']:
+                # #     lowest_chance = {'id':key, 'val':int(item)}
+                # if item > highest_expression['val']:
+                #     highest_expression = {'id':key, 'val':int(item)}
+                # if item < lowest_expression['val']:
+                #     lowest_expression = {'id':key, 'val':int(item)}
             genome_file.write("\n")
+        # total_expression = 0
+        # for dict in genomes:
+        #     total_expression += dict[highest_expression["id"]]
+        # chance = total_expression / len(genomes)
     all_genes = list_genes()
     highest_chance = random.choice(all_genes).strip()
     highest_chance = highest_chance.split(".")[0]

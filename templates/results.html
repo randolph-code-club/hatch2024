@@ -162,7 +162,9 @@
         </div>
         <div style="display:block" id="{{ highest_chance }}">
 
-            <p style="margin-bottom:50px"><a href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={{ highest_chance }}">Learn more about this gene here</a></p>
+            <p style="margin-bottom:50px"><a
+                    href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={{ highest_chance }}">Learn more about
+                    this gene here</a></p>
             {% if 33 > random_chance[0] %}
             <h2><span class="badge rounded-pill text-bg-success">{{ random_chance[0] }}%</span> risk of this gene being
                 expressed</h2>
@@ -184,7 +186,7 @@
                 expressed</h3>
             {% endif %}
             <a href="/download/{{ genome_id }}" download="genomes.csv" class="download-button">
-                <button type="button" class="btn btn-info">Download File</button>
+                <button type="button" class="btn btn-info">Download Mimic Genome</button>
             </a>
             <div style="margin-bottom:20px; margin-top:50px">
                 <span style="font-size:20px">
@@ -211,7 +213,9 @@
         </div>
         <div style="display:none" id="{{ lowest_chance }}">
 
-            <p style="margin-bottom:50px"><a href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={{ lowest_chance }}">Learn more about this gene here</a></p>
+            <p style="margin-bottom:50px"><a
+                    href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={{ lowest_chance }}">Learn more about this
+                    gene here</a></p>
             {% if 33 > random_chance[3] %}
             <h2><span class="badge rounded-pill text-bg-success">{{ random_chance[3] }}%</span> risk of this gene being
                 expressed</h2>
@@ -233,7 +237,7 @@
                 expressed</h3>
             {% endif %}
             <a href="/download/{{ genome_id }}" download="genomes.csv" class="download-button">
-                <button type="button" class="btn btn-info">Download File</button>
+                <button type="button" class="btn btn-info">Download Mimic Genome</button>
             </a>
             <div style="margin-bottom:20px; margin-top:50px">
                 <span style="font-size:20px">
@@ -260,7 +264,9 @@
         </div>
         <div style="display:none" id="{{ highest_expression }}">
 
-            <p style="margin-bottom:50px"><a href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={{ highest_expression }}">Learn more about this gene here</a></p>
+            <p style="margin-bottom:50px"><a
+                    href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={{ highest_expression }}">Learn more about
+                    this gene here</a></p>
             {% if 33 > random_chance[2] %}
             <h2><span class="badge rounded-pill text-bg-success">{{ random_chance[2] }}%</span> risk of this gene being
                 expressed</h2>
@@ -282,7 +288,7 @@
                 expressed</h3>
             {% endif %}
             <a href="/download/{{ genome_id }}" download="genomes.csv" class="download-button">
-                <button type="button" class="btn btn-info">Download File</button>
+                <button type="button" class="btn btn-info">Download Mimic Genome</button>
             </a>
             <div style="margin-bottom:20px; margin-top:50px">
                 <span style="font-size:20px">
@@ -309,7 +315,9 @@
         </div>
         <div style="display:none" id="{{ lowest_expression }}">
 
-            <p style="margin-bottom:50px"><a href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={{ lowest_expression }}">Learn more about this gene here</a></p>
+            <p style="margin-bottom:50px"><a
+                    href="https://www.ensembl.org/Homo_sapiens/Gene/Summary?g={{ lowest_expression }}">Learn more about
+                    this gene here</a></p>
             {% if 33 > random_chance[1] %}
             <h2><span class="badge rounded-pill text-bg-success">{{ random_chance[1] }}%</span> risk of this gene being
                 expressed</h2>
@@ -331,7 +339,7 @@
                 expressed</h3>
             {% endif %}
             <a href="/download/{{ genome_id }}" download="genomes.csv" class="download-button">
-                <button type="button" class="btn btn-info">Download File</button>
+                <button type="button" class="btn btn-info">Download Mimic Genome</button>
             </a>
             <div style="margin-bottom:20px; margin-top:50px">
                 <span style="font-size:20px">
@@ -369,7 +377,7 @@
                 document.getElementById("{{ lowest_expression }}").style.display = "none";
 
                 document.getElementById(selectedValue).style.display = "block";
-    
+
                 // Do something with the selected value
                 //alert("Selected value: " + selectedValue);
             }
