@@ -1,5 +1,6 @@
 # MimicSequence
 This is an app created for [HATCH 2024](https://hudsonalpha.org/techchallenge/).
+You can view the app [here](https://digitalraiders-hatch2024-28bba9bd5e1b.herokuapp.com/).
 
 ![Screenshot of app](mimic_seq_results.png)
 
