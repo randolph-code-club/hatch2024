@@ -28,7 +28,12 @@ app = Flask(__name__, instance_relative_config=True)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    error = request.args.get("error")
+    if error == "true":
+        message = "Please fill out all fields"
+    else:
+        message = ""
+    return render_template("index.html", error_message=message)
 
 @app.route("/download/<string:key>")
 def download(key):
@@ -36,33 +41,36 @@ def download(key):
 
 @app.route("/results", methods = ['POST'])
 def results():
-    # highest_chance = {'id':'', 'val':0}
-    # lowest_chance = {}
-    # highest_expression = {}
-    # lowest_expression = {}
-    form_data = request.form
-    genome_id = str(uuid.uuid4())
-    with open(genome_file_name(genome_id), "w") as genome_file:
-    # Write each item from the list to the file
-        first = True
-        genomes = select_mimic_genome(form_data)
-        for dict in genomes:
-            if first:
-                for key in dict:
-                    genome_file.write(f"{key},")
+    try:
+        # highest_chance = {'id':'', 'val':0}
+        # lowest_chance = {}
+        # highest_expression = {}
+        # lowest_expression = {}
+        form_data = request.form
+        genome_id = str(uuid.uuid4())
+        with open(genome_file_name(genome_id), "w") as genome_file:
+        # Write each item from the list to the file
+            first = True
+            genomes = select_mimic_genome(form_data)
+            for dict in genomes:
+                if first:
+                    for key in dict:
+                        genome_file.write(f"{key},")
+                    genome_file.write("\n")
+                    first = False
+                for key, item in dict.items():
+                    genome_file.write(f"{item},")
+                    # # if item > highest_chance['val']:
+                    # #     highest_chance = {'id':key, 'val':int(item)}
+                    # # if item < lowest_chance['val']:
+                    # #     lowest_chance = {'id':key, 'val':int(item)}
+                    # if item > highest_expression['val']:
+                    #     highest_expression = {'id':key, 'val':int(item)}
+                    # if item < lowest_expression['val']:
+                    #     lowest_expression = {'id':key, 'val':int(item)}
                 genome_file.write("\n")
-                first = False
-            for key, item in dict.items():
-                genome_file.write(f"{item},")
-                # # if item > highest_chance['val']:
-                # #     highest_chance = {'id':key, 'val':int(item)}
-                # # if item < lowest_chance['val']:
-                # #     lowest_chance = {'id':key, 'val':int(item)}
-                # if item > highest_expression['val']:
-                #     highest_expression = {'id':key, 'val':int(item)}
-                # if item < lowest_expression['val']:
-                #     lowest_expression = {'id':key, 'val':int(item)}
-            genome_file.write("\n")
+    except Exception as e:
+        return redirect("/?error=true")
         # total_expression = 0
         # for dict in genomes:
         #     total_expression += dict[highest_expression["id"]]
