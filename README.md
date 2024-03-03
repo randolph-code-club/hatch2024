@@ -1,6 +1,8 @@
 # MimicSequence
 This is an app created for [HATCH 2024](https://hudsonalpha.org/techchallenge/).
 
+![Screenshot of app](mimic_seq_results.png)
+
 
 ## Inspiration
 
