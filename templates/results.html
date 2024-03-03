@@ -3,9 +3,12 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap demo</title>
+        
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         :root {
             --rotate: 0deg;
@@ -131,62 +134,226 @@
             bottom: 0;
             transform: translate(-50%, 50%);
         }
-
     </style>
 </head>
+
 <body>
     <div style="text-align: center;">
         <h1>Your Results</h1>
-        <hr/>
+        <hr />
         <div style="text-align:center;">
             <form style="text-align:center">
                 <label for="race" class="form-label" style="font-size: 24px;">Gene</label>
-                    <select aria-label="Default select example">
-                        <option value="1">High Risk: {{ highest_chance }}</option>
-                        <option value="2">Lowest Risk: {{ lowest_chance }}</option>
-                        <option value="3">Strongest Expression Risk: {{ highest_expression }}</option>
-                        <option value="4">Lowest Expression Risk: {{ lowest_expression }}</option>3
-                    </select>
+                <select aria-label="Default select example" onchange="changeGene()" id="gene">
+                    <option selected value="{{ highest_chance }}">High Risk: {{ highest_chance }}</option>
+                    <option value="{{ lowest_chance }}">Lowest Risk: {{ lowest_chance }}</option>
+                    <option value="{{ highest_expression }}">Strongest Expression Risk: {{ highest_expression }}</option>
+                    <option value="{{ lowest_expression }}">Lowest Expression Risk: {{ lowest_expression }}</option>3
+                </select>
             </form>
         </div>
-        <p style="margin-bottom:50px"><a href="#">Learn more about this here</a></p>
-        {% if 33 > random_chance %}
-            <h2><span class="badge rounded-pill text-bg-success">{{ random_chance }}%</span> risk of this gene being expressed</h2>
-        {% elif random_chance > 67 %}
-            <h2><span class="badge rounded-pill text-bg-danger">{{ random_chance }}%</span> risk of this gene being expressed</h2>
-        {% else %}
-            <h2><span class="badge rounded-pill text-bg-warning">{{ random_chance }}%</span> risk of this gene being expressed</h2>
-        {% endif %}
-        {% if 33 > random_strong %}
-            <h3><span class="badge rounded-pill text-bg-success">{{ random_strong }}%</span> risk it is strongly expressed</h3>
-        {% elif random_strong > 67 %}
-            <h3><span class="badge rounded-pill text-bg-danger">{{ random_strong }}%</span> risk it is strongly expressed</h3>
-        {% else %}
-            <h3><span class="badge rounded-pill text-bg-warning">{{ random_strong }}%</span> risk it is strongly expressed</h3>
-        {% endif %}
-        <div style="margin-bottom:20px; margin-top:20px">
-            <span style="font-size:20px">
-                Your Gene's Sequence:
-            </span>
+        <div style="display:block" id="{{ highest_chance }}">
+
+            <p style="margin-bottom:50px"><a href="#">Learn more about this here</a></p>
+            {% if 33 > random_chance[0] %}
+            <h2><span class="badge rounded-pill text-bg-success">{{ random_chance[0] }}%</span> risk of this gene being
+                expressed</h2>
+            {% elif random_chance[0] > 67 %}
+            <h2><span class="badge rounded-pill text-bg-danger">{{ random_chance[0] }}%</span> risk of this gene being
+                expressed</h2>
+            {% else %}
+            <h2><span class="badge rounded-pill text-bg-warning">{{ random_chance[0] }}%</span> risk of this gene being
+                expressed</h2>
+            {% endif %}
+            {% if 33 > random_strong[2] %}
+            <h3><span class="badge rounded-pill text-bg-success">{{ random_strong[2] }}%</span> risk it is strongly
+                expressed</h3>
+            {% elif random_strong[2] > 67 %}
+            <h3><span class="badge rounded-pill text-bg-danger">{{ random_strong[2] }}%</span> risk it is strongly
+                expressed</h3>
+            {% else %}
+            <h3><span class="badge rounded-pill text-bg-warning">{{ random_strong[2] }}%</span> risk it is strongly
+                expressed</h3>
+            {% endif %}
+            <div style="margin-bottom:20px; margin-top:50px">
+                <span style="font-size:20px">
+                    Your Gene's Sequence:
+                </span>
+            </div>
+            <div class="wrapper" style="margin-top:200px">
+                <div style="margin-bottom:20px; margin-left:14px;">
+                    <span style="font-size:16px; letter-spacing:21.3pt">
+                        <b>{{ strand1[0] }}</b>
+                    </span>
+                </div>
+                <div class="dna">
+                    {% for i in range(strand1[0]|length) %}
+                    <div style="--i: {{ i + 1 }}"></div>
+                    {% endfor %}
+                </div>
+                <div style="margin-top:20px; margin-left:14px;">
+                    <span style="font-size:16px; letter-spacing:21.3pt">
+                        <b>{{ strand1[1] }}</b>
+                    </span>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="wrapper" style="margin-top:200px">
-        <div style="margin-bottom:20px; margin-left:14px;">
-            <span style="font-size:16px; letter-spacing:21.3pt">
-                <b>{{ sequence }}</b>
-            </span>
+        <div style="display:none" id="{{ lowest_chance }}">
+
+            <p style="margin-bottom:50px"><a href="#">Learn more about this here</a></p>
+            {% if 33 > random_chance[3] %}
+            <h2><span class="badge rounded-pill text-bg-success">{{ random_chance[3] }}%</span> risk of this gene being
+                expressed</h2>
+            {% elif random_chance[3] > 67 %}
+            <h2><span class="badge rounded-pill text-bg-danger">{{ random_chance[3] }}%</span> risk of this gene being
+                expressed</h2>
+            {% else %}
+            <h2><span class="badge rounded-pill text-bg-warning">{{ random_chance[3] }}%</span> risk of this gene being
+                expressed</h2>
+            {% endif %}
+            {% if 33 > random_strong[1] %}
+            <h3><span class="badge rounded-pill text-bg-success">{{ random_strong[1] }}%</span> risk it is strongly
+                expressed</h3>
+            {% elif random_strong[1] > 67 %}
+            <h3><span class="badge rounded-pill text-bg-danger">{{ random_strong[1] }}%</span> risk it is strongly
+                expressed</h3>
+            {% else %}
+            <h3><span class="badge rounded-pill text-bg-warning">{{ random_strong[1] }}%</span> risk it is strongly
+                expressed</h3>
+            {% endif %}
+            <div style="margin-bottom:20px; margin-top:50px">
+                <span style="font-size:20px">
+                    Your Gene's Sequence:
+                </span>
+            </div>
+            <div class="wrapper" style="margin-top:200px">
+                <div style="margin-bottom:20px; margin-left:14px;">
+                    <span style="font-size:16px; letter-spacing:21.3pt">
+                        <b>{{ strand2[0] }}</b>
+                    </span>
+                </div>
+                <div class="dna">
+                    {% for i in range(strand2[0]|length) %}
+                    <div style="--i: {{ i + 1 }}"></div>
+                    {% endfor %}
+                </div>
+                <div style="margin-top:20px; margin-left:14px;">
+                    <span style="font-size:16px; letter-spacing:21.3pt">
+                        <b>{{ strand2[1] }}</b>
+                    </span>
+                </div>
+            </div>
         </div>
-        <div class="dna">
-            {% for i in range(20) %}
-                <div style="--i: {{ i + 1 }}"></div>
-            {% endfor %}
+        <div style="display:none" id="{{ highest_expression }}">
+
+            <p style="margin-bottom:50px"><a href="#">Learn more about this here</a></p>
+            {% if 33 > random_chance[2] %}
+            <h2><span class="badge rounded-pill text-bg-success">{{ random_chance[2] }}%</span> risk of this gene being
+                expressed</h2>
+            {% elif random_chance[2] > 67 %}
+            <h2><span class="badge rounded-pill text-bg-danger">{{ random_chance[2] }}%</span> risk of this gene being
+                expressed</h2>
+            {% else %}
+            <h2><span class="badge rounded-pill text-bg-warning">{{ random_chance[2] }}%</span> risk of this gene being
+                expressed</h2>
+            {% endif %}
+            {% if 33 > random_strong[0] %}
+            <h3><span class="badge rounded-pill text-bg-success">{{ random_strong[0] }}%</span> risk it is strongly
+                expressed</h3>
+            {% elif random_strong[0] > 67 %}
+            <h3><span class="badge rounded-pill text-bg-danger">{{ random_strong[0] }}%</span> risk it is strongly
+                expressed</h3>
+            {% else %}
+            <h3><span class="badge rounded-pill text-bg-warning">{{ random_strong[0] }}%</span> risk it is strongly
+                expressed</h3>
+            {% endif %}
+            <div style="margin-bottom:20px; margin-top:50px">
+                <span style="font-size:20px">
+                    Your Gene's Sequence:
+                </span>
+            </div>
+            <div class="wrapper" style="margin-top:200px">
+                <div style="margin-bottom:20px; margin-left:14px;">
+                    <span style="font-size:16px; letter-spacing:21.3pt">
+                        <b>{{ strand3[0] }}</b>
+                    </span>
+                </div>
+                <div class="dna">
+                    {% for i in range(strand3[0]|length) %}
+                    <div style="--i: {{ i + 1 }}"></div>
+                    {% endfor %}
+                </div>
+                <div style="margin-top:20px; margin-left:14px;">
+                    <span style="font-size:16px; letter-spacing:21.3pt">
+                        <b>{{ strand3[1] }}</b>
+                    </span>
+                </div>
+            </div>
         </div>
-        <div style="margin-top:20px; margin-left:14px;">
-            <span style="font-size:16px; letter-spacing:21.3pt">
-                <b>{{ sequence2 }}</b>
-            </span>
+        <div style="display:none" id="{{ lowest_expression }}">
+
+            <p style="margin-bottom:50px"><a href="#">Learn more about this here</a></p>
+            {% if 33 > random_chance[1] %}
+            <h2><span class="badge rounded-pill text-bg-success">{{ random_chance[1] }}%</span> risk of this gene being
+                expressed</h2>
+            {% elif random_chance[1] > 67 %}
+            <h2><span class="badge rounded-pill text-bg-danger">{{ random_chance[1] }}%</span> risk of this gene being
+                expressed</h2>
+            {% else %}
+            <h2><span class="badge rounded-pill text-bg-warning">{{ random_chance[1] }}%</span> risk of this gene being
+                expressed</h2>
+            {% endif %}
+            {% if 33 > random_strong[3] %}
+            <h3><span class="badge rounded-pill text-bg-success">{{ random_strong[3] }}%</span> risk it is strongly
+                expressed</h3>
+            {% elif random_strong[3] > 67 %}
+            <h3><span class="badge rounded-pill text-bg-danger">{{ random_strong[3] }}%</span> risk it is strongly
+                expressed</h3>
+            {% else %}
+            <h3><span class="badge rounded-pill text-bg-warning">{{ random_strong[3] }}%</span> risk it is strongly
+                expressed</h3>
+            {% endif %}
+            <div style="margin-bottom:20px; margin-top:50px">
+                <span style="font-size:20px">
+                    Your Gene's Sequence:
+                </span>
+            </div>
+            <div class="wrapper" style="margin-top:200px">
+                <div style="margin-bottom:20px; margin-left:14px;">
+                    <span style="font-size:16px; letter-spacing:21.3pt">
+                        <b>{{ strand4[0] }}</b>
+                    </span>
+                </div>
+                <div class="dna">
+                    {% for i in range(strand4[0]|length) %}
+                    <div style="--i: {{ i + 1 }}"></div>
+                    {% endfor %}
+                </div>
+                <div style="margin-top:20px; margin-left:14px;">
+                    <span style="font-size:16px; letter-spacing:21.3pt">
+                        <b>{{ strand4[1] }}</b>
+                    </span>
+                </div>
+            </div>
         </div>
-    </div>
+        <script>
+            function changeGene() {
+                // Get the selected value
+                var selectedValue = document.getElementById("gene").value;
+
+                console.log(selectedValue)
+
+                document.getElementById("{{ highest_chance }}").style.display = "none";
+                document.getElementById("{{ lowest_chance }}").style.display = "none";
+                document.getElementById("{{ highest_expression }}").style.display = "none";
+                document.getElementById("{{ lowest_expression }}").style.display = "none";
+
+                document.getElementById(selectedValue).style.display = "block";
+    
+                // Do something with the selected value
+                //alert("Selected value: " + selectedValue);
+            }
+        </script>
 </body>
 
 </html>
