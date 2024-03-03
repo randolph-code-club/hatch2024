@@ -78,11 +78,11 @@
             <div class="col-12">
               <label for="username" class="form-label">Gender</label>
               <div class="input-group has-validation">
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" id="gender" name="gender">
                     <option selected>Choose...</option>
-                    <option value="1">Male</option>
-                    <option value="2">Female</option>
-                    <option value="3">Other</option>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                    <option value="2">Other</option>
                   </select>
               <div class="invalid-feedback">
                   Your gender is required.
@@ -91,22 +91,23 @@
             </div>
 
             <div class="col-12">
-              <label for="email" class="form-label">Year of Birth</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter text here...">
+              <label for="age" class="form-label">Age</label>
+              <input class="form-control" id="age" name="age" placeholder="Enter text here...">
               <div class="invalid-feedback">
-                Please enter a valid year.
+                Please enter a valid age.
               </div>
             </div>
             
             <div class="col-12">
                 <label for="race" class="form-label">Race</label>
                 <div class="input-group has-validation">
-                  <select class="form-select" aria-label="Default select example">
+                  <select class="form-select" aria-label="Default select example" id="race" name="race">
                       <option selected>Choose...</option>
                       <option value="1">White</option>
-                      <option value="2">Asian</option>
-                      <option value="3">African-American</option>
-                      <option value="4">Prefer not to say</option>
+                      <option value="2">African-American</option>
+                      <option value="3">American Indian or Alaska Native</option>
+                      <option value="4">Asian</option>
+                      <option value="0">Prefer not to say</option>
                     </select>
                 <div class="invalid-feedback">
                     Your ethnicity is required.
@@ -130,8 +131,8 @@
             </div>
 
             <div class="col-12">
-                <label for="email" class="form-label">Cigarettes per day</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter text here...">
+                <label for="cigs" class="form-label">Cigarettes per day</label>
+                <input class="form-control" id="cigs" name="cigs" placeholder="Enter text here...">
                 <div class="invalid-feedback">
                   Please enter the number of cigarettes you use per day.
                 </div>
@@ -171,7 +172,7 @@
   </main>
 
   <footer class="my-5 pt-5 text-body-secondary text-center text-small">
-    <p class="mb-1">&copy; 2017–2024 Digital Raiders</p>
+    <p class="mb-1">&copy; 2024 Digital Raiders</p>
     <ul class="list-inline">
       <li class="list-inline-item"><a href="#">Privacy</a></li>
       <li class="list-inline-item"><a href="#">Terms</a></li>

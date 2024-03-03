@@ -38,11 +38,15 @@ with open("gene_id.txt", 'r') as file:
 		model_path = f"models/pii_{gene_id}.keras"
 		if os.path.exists(model_path):
 			gene_ids.append(gene_id)
+			# try:
 			model = keras.models.load_model(model_path)
 			new_predictions = model.predict(new_data_scaled)
 
 			for i in range(new_samples):
 				mimic_genes[gene_id].append(new_predictions[i][0])
+			# except Exception as e:
+			# 	print(f"Gene ID {gene_id} failed")
+			
 
 # # Display the results
 # for i in range(new_samples):

@@ -93,5 +93,5 @@ def create_model(gene_row):
 	model.summary()
 	model.save(f"models/pii_{gene_id}.keras")
 
-for i in range(5638+1000, 5638+2000):
+for i in range(5638+1401, 5638+2000):
 	create_model(i)
